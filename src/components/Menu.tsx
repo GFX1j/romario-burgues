@@ -76,18 +76,18 @@ export const Menu = () => {
   };
 
   return (
-    <section id="menu" className="py-20 bg-background">
+    <section id="menu" className="py-12 sm:py-20 bg-[#f6f1f2]">
       <div className="container mx-auto px-4">
         {/* Header */}
-        <div className="text-center mb-12 animate-fade-in">
-          <h2 className="category-header">Nosso Cardápio</h2>
+        <div className="text-center mb-8 sm:mb-12 animate-fade-in">
+          <h2 className="text-3xl font-bold text-[#030236] mb-6 text-center">Nosso Cardápio</h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
             Explore nossos deliciosos hambúrgueres, petiscos e bebidas especiais
           </p>
         </div>
 
         {/* Filters */}
-        <div className="mb-12 space-y-6">
+        <div className="mb-8 sm:mb-12 space-y-4 sm:space-y-6">
           {/* Search */}
           <div className="max-w-md mx-auto relative">
             <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
@@ -105,7 +105,7 @@ export const Menu = () => {
             <Button
               variant={selectedCategory === 'all' ? 'default' : 'outline'}
               onClick={() => setSelectedCategory('all')}
-              className={selectedCategory === 'all' ? 'filter-active' : 'hover:bg-primary/10'}
+              className={selectedCategory === 'all' ? 'filter-active' : 'bg-white text-gray-700 border-gray-200 hover:bg-primary hover:text-white'}
             >
               Todos
             </Button>
@@ -114,7 +114,7 @@ export const Menu = () => {
                 key={category.id}
                 variant={selectedCategory === category.id ? 'default' : 'outline'}
                 onClick={() => setSelectedCategory(category.id as ProductCategory)}
-                className={selectedCategory === category.id ? 'filter-active' : 'hover:bg-primary/10'}
+                className={selectedCategory === category.id ? 'filter-active' : 'bg-white text-gray-700 border-gray-200 hover:bg-primary hover:text-white'}
               >
                 {category.icon} {category.name}
               </Button>
@@ -124,20 +124,20 @@ export const Menu = () => {
           {/* Price Range Filters */}
           <div className="flex flex-wrap justify-center gap-3">
             <Button
-              variant={selectedPriceRange === null ? 'secondary' : 'outline'}
+              variant={selectedPriceRange === null ? 'default' : 'outline'}
               onClick={() => setSelectedPriceRange(null)}
               size="sm"
-              className={selectedPriceRange === null ? 'bg-secondary' : 'hover:bg-secondary/10'}
+              className={selectedPriceRange === null ? 'filter-active' : 'bg-white text-gray-700 border-gray-200 hover:bg-primary hover:text-white'}
             >
               Todos os preços
             </Button>
             {priceRanges.map((range, index) => (
               <Button
                 key={index}
-                variant={selectedPriceRange === index ? 'secondary' : 'outline'}
+                variant={selectedPriceRange === index ? 'default' : 'outline'}
                 onClick={() => setSelectedPriceRange(index)}
                 size="sm"
-                className={selectedPriceRange === index ? 'bg-secondary' : 'hover:bg-secondary/10'}
+                className={selectedPriceRange === index ? 'filter-active' : 'bg-white text-gray-700 border-gray-200 hover:bg-primary hover:text-white'}
               >
                 {range.label}
               </Button>
@@ -162,7 +162,7 @@ export const Menu = () => {
                       ({categoryProducts.length})
                     </span>
                   </h3>
-                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 sm:gap-6">
                     {categoryProducts.map(product => (
                       <ProductCard
                         key={product.id}
@@ -179,7 +179,7 @@ export const Menu = () => {
           // Mostrar produtos da categoria selecionada
           <div className="animate-slide-up">
             {filteredProducts.length > 0 ? (
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 sm:gap-6">
                 {filteredProducts.map(product => (
                   <ProductCard
                     key={product.id}

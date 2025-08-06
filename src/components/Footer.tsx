@@ -94,7 +94,7 @@ export const Footer = () => {
         <div className="border-t border-background/20 mt-8 pt-8 text-center">
           <p className="text-background/60 text-sm flex items-center justify-center gap-2">
             © {currentYear} American Burguer. Feito com 
-            <Heart className="h-4 w-4 text-red-500 fill-current" />
+                            <Heart className="h-4 w-4 text-primary fill-current" />
             em Buenos Aires - PE
           </p>
         </div>

@@ -22,11 +22,11 @@ export const ProductCard = ({ product, onAddToCart }: ProductCardProps) => {
         <img
           src={product.image}
           alt={product.name}
-          className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-500"
+          className="w-full h-32 sm:h-48 object-cover group-hover:scale-110 transition-transform duration-500"
         />
         {!product.available && (
           <div className="absolute inset-0 bg-black/50 flex items-center justify-center">
-            <Badge variant="destructive" className="text-lg px-4 py-2">
+            <Badge variant="destructive" className="text-xs sm:text-sm px-2 py-1">
               Indisponível
             </Badge>
           </div>
@@ -34,31 +34,26 @@ export const ProductCard = ({ product, onAddToCart }: ProductCardProps) => {
       </div>
 
       {/* Content */}
-      <div className="p-6">
-        <div className="flex justify-between items-start mb-3">
-          <h3 className="text-xl font-bold text-foreground group-hover:text-primary transition-colors duration-300">
-            {product.name}
-          </h3>
-          <div className="price-tag">
-            {formatPrice(product.price)}
-          </div>
-        </div>
+      <div className="p-2 sm:p-3">
+        <h3 className="text-sm font-bold text-[#030236] group-hover:text-primary transition-colors duration-300 mb-1">
+          {product.name}
+        </h3>
 
-        <p className="text-muted-foreground mb-4 line-clamp-3 leading-relaxed">
+        <p className="text-[#666] mb-2 line-clamp-1 leading-relaxed text-xs">
           {product.description}
         </p>
 
-        <div className="flex items-center justify-between">
-          <Badge variant="outline" className="text-xs">
-            {formatPrice(product.price)}/UN
-          </Badge>
+        <div className="flex items-center justify-between gap-2">
+          <div className="price-tag text-sm font-bold">
+            {formatPrice(product.price)}
+          </div>
           
           <Button
             onClick={() => onAddToCart(product)}
             disabled={!product.available}
-            className="bg-gradient-to-r from-primary to-secondary hover:from-secondary hover:to-primary text-primary-foreground font-medium px-6 py-2 rounded-full transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl"
+            className="bg-gradient-to-r from-primary to-secondary hover:from-secondary hover:to-primary text-primary-foreground font-medium px-3 py-1 rounded-full transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl text-xs"
           >
-            {product.available ? 'Adicionar ao Carrinho' : 'Indisponível'}
+            {product.available ? 'Adicionar' : 'Indisponível'}
           </Button>
         </div>
       </div>

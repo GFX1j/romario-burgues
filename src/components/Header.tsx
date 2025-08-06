@@ -30,7 +30,7 @@ export const Header = ({ onCartClick, onSectionClick }: HeaderProps) => {
   };
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-md border-b border-border shadow-lg">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-gradient-to-b from-[#030236] to-[#110a27]/90 backdrop-blur-md shadow-lg">
       <div className="container mx-auto px-4 py-3">
         <div className="flex items-center justify-between">
           {/* Logo */}
@@ -44,8 +44,8 @@ export const Header = ({ onCartClick, onSectionClick }: HeaderProps) => {
               className="h-12 w-12 rounded-lg shadow-md hover:scale-110 transition-transform duration-300" 
             />
             <div>
-              <h1 className="text-xl font-bold text-gradient">American Burguer</h1>
-              <p className="text-xs text-muted-foreground">Buenos Aires - PE</p>
+              <h1 className="text-xl font-bold text-white">American Burguer</h1>
+              <p className="text-xs text-white/70">Buenos Aires - PE</p>
             </div>
           </div>
 
@@ -55,7 +55,7 @@ export const Header = ({ onCartClick, onSectionClick }: HeaderProps) => {
               <button
                 key={item.section}
                 onClick={() => scrollToSection(item.section)}
-                className="text-foreground hover:text-primary font-medium transition-colors duration-300 hover:scale-105"
+                className="text-white hover:text-primary font-medium transition-colors duration-300 hover:scale-105"
               >
                 {item.label}
               </button>
@@ -70,10 +70,9 @@ export const Header = ({ onCartClick, onSectionClick }: HeaderProps) => {
                 variant="outline"
                 size="sm"
                 onClick={onCartClick}
-                className="hover:bg-primary hover:text-primary-foreground transition-all duration-300 hover:scale-105"
+                className="bg-[#1a1a2e] border-gray-400 text-white hover:bg-[#16213e] hover:border-gray-300 transition-all duration-300 hover:scale-105"
               >
                 <ShoppingCart className="h-4 w-4" />
-                <span className="hidden sm:inline ml-2">Carrinho</span>
               </Button>
               {itemCount > 0 && (
                 <Badge className="cart-badge">
@@ -86,7 +85,7 @@ export const Header = ({ onCartClick, onSectionClick }: HeaderProps) => {
             <Button
               variant="outline"
               size="sm"
-              className="md:hidden"
+              className="md:hidden bg-white/10 border-white/20 text-white hover:bg-primary hover:text-white"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             >
               {isMobileMenuOpen ? (
@@ -100,13 +99,13 @@ export const Header = ({ onCartClick, onSectionClick }: HeaderProps) => {
 
         {/* Menu Mobile */}
         {isMobileMenuOpen && (
-          <nav className="md:hidden mt-4 pb-4 border-t border-border animate-slide-up">
+          <nav className="md:hidden mt-4 pb-4 border-t border-white/20 animate-slide-up">
             <div className="flex flex-col space-y-3 pt-4">
               {menuItems.map((item) => (
                 <button
                   key={item.section}
                   onClick={() => scrollToSection(item.section)}
-                  className="text-left text-foreground hover:text-primary font-medium transition-colors duration-300 py-2"
+                  className="text-left text-white hover:text-primary font-medium transition-colors duration-300 py-2"
                 >
                   {item.label}
                 </button>
