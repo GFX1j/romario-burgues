@@ -12,6 +12,9 @@ interface CartProps {
 
 export const Cart = ({ isOpen, onClose, onCheckout }: CartProps) => {
   const { items, itemCount, subtotal, deliveryFee, total, removeItem, updateQuantity } = useCart();
+  
+  console.log('Cart: items from useCart:', items);
+  console.log('Cart: itemCount:', itemCount);
 
   const formatPrice = (price: number) => {
     return price.toLocaleString('pt-BR', {

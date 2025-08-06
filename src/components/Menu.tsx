@@ -66,7 +66,9 @@ export const Menu = () => {
     additionals: Additional[], 
     observations: string
   ) => {
+    console.log('Menu: handleConfirmAddToCart called with:', { product, quantity, additionals, observations });
     addItem(product, quantity, additionals, observations);
+    console.log('Menu: addItem called successfully');
     toast({
       title: "Item adicionado!",
       description: `${product.name} foi adicionado ao seu carrinho.`,

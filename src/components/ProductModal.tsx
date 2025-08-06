@@ -47,8 +47,15 @@ export const ProductModal = ({ product, isOpen, onClose, onAddToCart }: ProductM
   };
 
   const handleConfirm = () => {
+    console.log('ProductModal: handleConfirm called');
+    console.log('ProductModal: product:', product);
+    console.log('ProductModal: quantity:', quantity);
+    console.log('ProductModal: selectedAdditionals:', selectedAdditionals);
+    console.log('ProductModal: observations:', observations);
+    
     if (product) {
       onAddToCart(product, quantity, selectedAdditionals, observations);
+      console.log('ProductModal: onAddToCart called');
       onClose();
     }
   };

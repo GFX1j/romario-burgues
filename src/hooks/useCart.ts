@@ -30,6 +30,8 @@ export const useCart = () => {
     additionals: Additional[] = [],
     observations: string = ''
   ) => {
+    console.log('useCart: addItem called with:', { product, quantity, additionals, observations });
+    
     const additionalPrice = additionals
       .filter(a => a.selected)
       .reduce((sum, a) => sum + a.price, 0);
@@ -44,7 +46,14 @@ export const useCart = () => {
       totalPrice
     };
 
-    setItems(prev => [...prev, newItem]);
+    console.log('useCart: newItem created:', newItem);
+    console.log('useCart: current items before adding:', items);
+    
+    setItems(prev => {
+      const newItems = [...prev, newItem];
+      console.log('useCart: new items array:', newItems);
+      return newItems;
+    });
   };
 
   const removeItem = (index: number) => {
