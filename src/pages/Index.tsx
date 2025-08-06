@@ -1,12 +1,76 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import { useState } from 'react';
+import { Header } from '@/components/Header';
+import { Hero } from '@/components/Hero';
+import { Menu } from '@/components/Menu';
+import { About } from '@/components/About';
+import { Contact } from '@/components/Contact';
+import { Footer } from '@/components/Footer';
+import { Cart } from '@/components/Cart';
+import { CheckoutForm } from '@/components/CheckoutForm';
+import { WhatsAppFloat } from '@/components/WhatsAppFloat';
 
 const Index = () => {
+  const [isCartOpen, setIsCartOpen] = useState(false);
+  const [isCheckoutOpen, setIsCheckoutOpen] = useState(false);
+
+  const handleCartOpen = () => setIsCartOpen(true);
+  const handleCartClose = () => setIsCartOpen(false);
+  
+  const handleCheckoutOpen = () => {
+    setIsCheckoutOpen(true);
+  };
+  
+  const handleCheckoutClose = () => {
+    setIsCheckoutOpen(false);
+  };
+
+  const handleCheckoutBack = () => {
+    setIsCheckoutOpen(false);
+    setIsCartOpen(true);
+  };
+
+  const scrollToSection = (section: string) => {
+    const element = document.getElementById(section);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
-    <div className="min-h-screen flex items-center justify-center bg-background">
-      <div className="text-center">
-        <h1 className="text-4xl font-bold mb-4">Welcome to Your Blank App</h1>
-        <p className="text-xl text-muted-foreground">Start building your amazing project here!</p>
-      </div>
+    <div className="min-h-screen bg-background">
+      {/* Header */}
+      <Header 
+        onCartClick={handleCartOpen}
+        onSectionClick={scrollToSection}
+      />
+
+      {/* Main Content */}
+      <main>
+        <Hero onMenuClick={() => scrollToSection('menu')} />
+        <Menu />
+        <About />
+        <Contact />
+      </main>
+
+      {/* Footer */}
+      <Footer />
+
+      {/* WhatsApp Float Button */}
+      <WhatsAppFloat />
+
+      {/* Cart Sidebar */}
+      <Cart 
+        isOpen={isCartOpen}
+        onClose={handleCartClose}
+        onCheckout={handleCheckoutOpen}
+      />
+
+      {/* Checkout Form */}
+      <CheckoutForm 
+        isOpen={isCheckoutOpen}
+        onClose={handleCheckoutClose}
+        onBack={handleCheckoutBack}
+      />
     </div>
   );
 };
